@@ -1,7 +1,7 @@
 <?php 
 require_once("../src/models/ProductoModel.php");
 Class ControllerProducto{
-    public static function obtenerProducto(){
+    public static function mostrarProductos(){
         $productoModel = new ProductoModel();
         $producto = $productoModel->obtenerProductos();
         

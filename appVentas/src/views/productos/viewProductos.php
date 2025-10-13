@@ -16,14 +16,14 @@
             <th>Cantidad</th>
             <th>Imagen</th>
         </tr>
-        <?php foreach($producto as $p) { ?>
+        <?php foreach($producto as $p){ ?>
             <tr>
-                <th><?php echo $p->id_producto ?></th>
-                <th><?php echo $p->nombre ?></th>
-                <th><?php echo $p->empresa ?></th>
-                <th><?php echo $p->precio ?></th>
-                <th><?php echo $p->cantidad ?></th>
-                <th><?php echo $p->img ?></th>
+                <th><?php echo $p->id_producto; ?></th>
+                <th><?php echo $p->nombre; ?></th>
+                <th><?php echo $p->empresa; ?></th>
+                <th><?php echo $p->precio; ?></th>
+                <th><?php echo $p->cantidad; ?></th>
+                <th><?php echo $p->img; ?></th>
         <?php } ?>
     </table>
 </body>

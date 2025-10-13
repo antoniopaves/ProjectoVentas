@@ -5,14 +5,17 @@ require_once("./src/controllers/ControllerProducto.php");
 $controller = $_GET['controller'];
 $action = $_GET['action'];
 
-if(empty($view) || empty($action)){
-
-    
-
+if(empty($controller)){
+$controller = 'producto';
 }
+
+if(empty($action)){
+$action = 'listar'
+}
+
 else{
 
 $controller = new ControllerProducto();
-$controller -> obtenerProducto();
+$controller -> mostrarProductos();
 
 }

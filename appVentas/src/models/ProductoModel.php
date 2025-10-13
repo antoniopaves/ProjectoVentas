@@ -2,6 +2,7 @@
 require_once("./src/config/Config.php");
 require_once("./src/clases/Producto.php");
 Class ProductoModel{
+    
     function obtenerProductos(){
         $conexion = Config::Conectar();
 
