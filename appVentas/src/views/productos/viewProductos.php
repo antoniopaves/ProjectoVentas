@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php if (!empty($producto) && is_array($producto)) { ?>
    <table border="1" >
         <tr>
             <th>Id</th>
@@ -24,7 +25,11 @@
                 <th><?php echo $p->precio; ?></th>
                 <th><?php echo $p->cantidad; ?></th>
                 <th><?php echo $p->img; ?></th>
+            </tr>
         <?php } ?>
     </table>
+<?php } else { ?>
+    <p>No hay productos para mostrar.</p>
+<?php } ?>
 </body>
 </html>

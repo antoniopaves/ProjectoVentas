@@ -1,9 +1,9 @@
 <?php
 Class Config{
-    public static function Conectar(){
-        $mysql = 'mysql:dbname=db-productos;host=localhost';
+    public static function conectar(){
+        $sql = 'mysql:dbname=db-productos;host=localhost';
         $user = 'root';
         $password = '';
-        return new PDO($mysql, $user, $password);
+        return new PDO($sql, $user, $password);
     }
 }
