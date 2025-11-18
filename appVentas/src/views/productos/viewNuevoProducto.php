@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo Producto</title>
 </head>
+<link rel="stylesheet" href="<?php echo CORE_URL . 'src/css/viewEditarNuevoStyle.css'; ?>">
 <body>
     <h1>Agregar nuevo producto</h1>
     <form action="<?php echo BASE_URL; ?>?controller=ControllerProducto&action=postNuevoProducto" method="post" enctype="multipart/form-data">

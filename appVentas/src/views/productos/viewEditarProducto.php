@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="<?php echo CORE_URL . 'src/css/viewEditarNuevoStyle.css'; ?>">
 <body>
    <h1>Editar Producto</h1>
     <form action="<?php echo BASE_URL . '?controller=ControllerProducto&action=postEditarProducto'; ?>" method="post">
@@ -26,7 +27,7 @@
         <input type="hidden" name="id_producto" value="<?php echo $producto->id_producto ?>">
 
         <div class="actions">
-            <button type="submit">Guardar producto</button>
+            <button type="submit">Guardar Cambios</button>
         </div>
     </form>
 </body>
