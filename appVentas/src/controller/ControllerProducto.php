@@ -22,7 +22,8 @@ Class ControllerProducto{
         $img=trim($_POST["img"]);
 
         if(empty($nombre) || empty($empresa) || empty($precio) || empty($cantidad) || empty($img)){
-            echo "0";
+            echo "Por Favor complete todos los campos.";
+            return 0;
         }else{
         $producto->nombre=$_POST["nombre"];
         $producto->empresa=$_POST["empresa"];
@@ -75,6 +76,19 @@ Class ControllerProducto{
     }
 
     function postEditarProducto(){
+        $producto = new Producto();
+        
+        $nombre=trim($_POST["nombre"]);
+        $empresa=trim($_POST["empresa"]);
+        $precio=trim($_POST["precio"]);
+        $cantidad=trim($_POST["cantidad"]);
+        $img=trim($_POST["img"]);
+
+        if(empty($nombre) || empty($empresa) || empty($precio) || empty($cantidad) || empty($img)){
+            echo "Por Favor complete todos los campos.";
+            return 0;
+        }else{
+
         $id_producto = $_POST["id_producto"];
         $producto = new Producto();
         $producto->nombre=$_POST["nombre"];
@@ -85,6 +99,7 @@ Class ControllerProducto{
 
         $model = new ProductoModel();
         echo $model->editarProducto($producto,$id_producto);
+        }
         
     }
         
