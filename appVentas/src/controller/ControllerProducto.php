@@ -2,6 +2,7 @@
 require_once("./src/models/ProductoModel.php");
 require_once("./src/clases/Producto.php");
 Class ControllerProducto{
+
     function mostrarProductos(){
         $producto = new ProductoModel();
         $productos = $producto->obtenerProductos();
@@ -100,7 +101,16 @@ Class ControllerProducto{
         $model = new ProductoModel();
         echo $model->editarProducto($producto,$id_producto);
         }
-        
+
+    }
+
+    function viewCarro(){
+        include("./src/views/productos/viewCarro.php");
+    }
+
+    function añadirCarro(){
+        $id_producto = trim($_GET["id_producto"]);  
+        echo "Producto con ID " . $id_producto . " añadido al carro.";
     }
         
     

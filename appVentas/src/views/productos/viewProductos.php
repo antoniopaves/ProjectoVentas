@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="<?php echo CORE_URL . 'src/css/viewProductosStyle.css'; ?>">
 <body>
     <a href="<?php echo BASE_URL."?controller=ControllerProducto&action=viewNuevoProducto" ?>">Nuevo Producto</a>
+    <a href="<?php echo BASE_URL."?controller=ControllerProducto&action=viewCarro" ?>">Carro</a>
     <form action="<?php echo BASE_URL; ?>?controller=ControllerProducto&action=buscarProductoID" method="post" enctype="multipart/form-data">
     <label for="Producto">Buscar Producto Por ID</label>
         <input type="number" id="id_producto" name="id_producto" placeholder="Ejemplo: 1 al ∞" >
@@ -27,6 +28,7 @@
             <th>Imagen</th>
             <th>Editar</th>
             <th>Eliminar</th>
+            <th>Carro</th>
         </tr>
         <?php foreach($productos as $p){ ?>
             <tr>
@@ -42,6 +44,7 @@
                 </th>
                 <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=viewEditarProducto&id_producto=$p->id_producto" ?>">Editar</a></th>
                 <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=EliminarProducto&id_producto=$p->id_producto" ?>">Eliminar</a></th>
+                <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=añadirCarro&id_producto=$p->id_producto" ?>">Añadir Al Carro</a></th>
             </tr>
         <?php } ?>
     </table>
