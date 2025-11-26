@@ -34,6 +34,7 @@
             </td>
             <td>
                 <a href="<?php echo BASE_URL . '?controller=ControllerProducto&action=eliminarDelCarro&id_producto=' . $producto->id_producto; ?>">Eliminar del Carro</a>
+                <a href="<?php echo BASE_URL . '?controller=ControllerProducto&action=eliminarUnoDelCarro&id_producto=' . $producto->id_producto; ?>">Eliminar 1 del Carro</a>
             </td>
         </tr>
         <?php endforeach; ?>

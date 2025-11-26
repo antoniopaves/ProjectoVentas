@@ -150,6 +150,7 @@ Class ControllerProducto{
     echo "Producto con ID " . $id_producto . " añadido al carro.";
 }
         
+
     function eliminarDelCarro() {
     session_start();
     if (!isset($_GET["id_producto"])) {
@@ -163,6 +164,32 @@ Class ControllerProducto{
         unset($_SESSION["carrito"][$id_producto]);
         echo "Producto con ID " . $id_producto . " eliminado del carro.";
     } else {
+        echo "El producto con ID " . $id_producto . " no está en el carro.";
+        }
+    }
+
+    function eliminarUnoDelCarro() {
+    session_start();
+    if (!isset($_GET["id_producto"])) {
+        echo "No se recibió el ID del producto.";
+        return;
+    }    
+
+    $id_producto = trim($_GET["id_producto"]);
+
+      if (isset($_SESSION["carrito"][$id_producto])) {
+        $_SESSION["carrito"][$id_producto]--; 
+    } else {
+        $_SESSION["carrito"][$id_producto] = 0;
+    }
+
+    if (isset($_SESSION["carrito"][$id_producto])) {
+        if ($_SESSION["carrito"][$id_producto] <= 0) {
+            unset($_SESSION["carrito"][$id_producto]);
+            echo "Producto con ID " . $id_producto . " eliminado del carro.";
+        } else {
+            echo "Se eliminó 1 unidad del producto con ID " . $id_producto . " del carro.";
+        }
         echo "El producto con ID " . $id_producto . " no está en el carro.";
         }
     }
