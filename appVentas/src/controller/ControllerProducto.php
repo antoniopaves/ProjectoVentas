@@ -105,13 +105,65 @@ Class ControllerProducto{
     }
 
     function viewCarro(){
+        session_start();
+
+        $productosCarro = [];
+    
+        if (isset($_SESSION["carrito"]) && count($_SESSION["carrito"]) > 0) {
+            $model = new ProductoModel();
+
+            foreach ($_SESSION["carrito"] as $id_producto => $cantidad) {
+                $producto = $model->buscarProductoPorId($id_producto);
+                if ($producto) {
+                    $producto->cantidad_carrito = $cantidad; 
+                    $productosCarro[] = $producto;
+            }
+        }
+    }
         include("./src/views/productos/viewCarro.php");
     }
 
-    function añadirCarro(){
-        $id_producto = trim($_GET["id_producto"]);  
-        echo "Producto con ID " . $id_producto . " añadido al carro.";
-    }
-        
+
+
+   function añadirCarro() {
+    session_start(); 
     
+    if (!isset($_GET["id_producto"])) {
+        echo "No se recibió el ID del producto.";
+        return;
+    }
+
+    $id_producto = trim($_GET["id_producto"]);
+
+    
+    if (!isset($_SESSION["carrito"])) {
+        $_SESSION["carrito"] = [];
+    }
+
+    
+    if (isset($_SESSION["carrito"][$id_producto])) {
+        $_SESSION["carrito"][$id_producto]++; 
+    } else {
+        $_SESSION["carrito"][$id_producto] = 1;
+    }
+
+    echo "Producto con ID " . $id_producto . " añadido al carro.";
+}
+        
+    function eliminarDelCarro() {
+    session_start();
+    if (!isset($_GET["id_producto"])) {
+        echo "No se recibió el ID del producto.";
+        return;
+    }    
+
+    $id_producto = trim($_GET["id_producto"]);
+
+    if (isset($_SESSION["carrito"][$id_producto])) {
+        unset($_SESSION["carrito"][$id_producto]);
+        echo "Producto con ID " . $id_producto . " eliminado del carro.";
+    } else {
+        echo "El producto con ID " . $id_producto . " no está en el carro.";
+        }
+    }
 }
