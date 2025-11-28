@@ -51,4 +51,14 @@ Class ProductoModel{
             }
         return $producto;
     }
+
+    function descontarStock($id_producto, $cantidadComprada){
+        $sql = "UPDATE productos SET cantidad = cantidad - :cantidad WHERE id_producto = :id_producto AND cantidad >= :cantidad";
+        $stm = Config::conectar()->prepare($sql);
+        $stm->bindValue(':cantidad', $cantidadComprada, PDO::PARAM_INT);
+        $stm->bindValue(':id_producto', $id_producto, PDO::PARAM_INT);
+        $stm->execute();
+
+        return $stm->rowCount();
+    }
 }

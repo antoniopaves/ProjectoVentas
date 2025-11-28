@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?php echo CORE_URL . 'src/css/viewEditarNuevoStyle.css'; ?>">
 <body>
    <h1>Editar Producto</h1>
-    <form action="<?php echo BASE_URL . '?controller=ControllerProducto&action=postEditarProducto'; ?>" method="post">
+    <form action="<?php echo BASE_URL . '?controller=ControllerProducto&action=postEditarProducto'; ?>" method="post" enctype="multipart/form-data">
         <label for="nombre">Nombre del producto</label>
         <input type="text" id="nombre" name="nombre" value="<?php echo $producto->nombre ?>" >
 
@@ -21,10 +21,11 @@
         <label for="cantidad">Cantidad</label>
         <input type="number" id="cantidad" name="cantidad" value="<?php echo $producto->cantidad ?>" >
 
-        <label for="img">Imagen(Nombre del Archivo con Extension)</label>
-        <input type="text" id="img" name="img" value="<?php echo $producto->img ?>" >
-
-        <input type="hidden" name="id_producto" value="<?php echo $producto->id_producto ?>">
+        <label for="img">Imagen del producto</label>
+        <input type="file" id="img" name="img" accept="image/*" >
+        
+        <input type="hidden" name="img_actual" value="<?php echo $producto->img; ?>">
+        <input type="hidden" name="id_producto" value="<?php echo $producto->id_producto ?>" >
 
         <div class="actions">
             <button type="submit">Guardar Cambios</button>

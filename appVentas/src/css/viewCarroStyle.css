@@ -36,6 +36,17 @@ input {
 }
 
 a {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: inline-block;
+}
+
+button {
+    position: relative;
+    float: right;
+    margin-bottom: 15px;
+    width: 140px;
+    height: 70px;
+    background-color: rgb(33, 150, 243);
+    cursor: pointer;
+    font-size: 20px;
 }

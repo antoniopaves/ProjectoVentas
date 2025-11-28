@@ -21,9 +21,9 @@
         <label for="cantidad">Cantidad</label>
         <input type="number" id="cantidad" name="cantidad" placeholder="Ejemplo: 1 al ∞" required>
 
-        <label for="img">Imagen(Nombre del Archivo con Extension)</label>
-        <input type="text" id="img" name="img" placeholder="Ejemplo: IMG.jpg" required>
-
+        <label for="img">Imagen del producto</label>
+        <input type="file" id="img" name="img" accept="image/*" required>
+        
         <div class="actions">
             <button type="submit">Guardar producto</button>
         </div>

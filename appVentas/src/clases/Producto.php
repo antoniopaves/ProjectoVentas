@@ -5,5 +5,5 @@ Class Producto{
     public String $empresa;
     public int $precio;
     public int $cantidad;
-    public String $img;
+    public String $img = '';
 }
