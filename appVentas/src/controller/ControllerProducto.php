@@ -170,34 +170,57 @@ Class ControllerProducto{
     }
 
 
+function añadirCarro() {
+    session_start();
 
-   function añadirCarro() {
-    session_start(); 
-    
-    if (!isset($_GET["id_producto"])) {
-        echo "No se recibió el ID del producto.";
+    if (!isset($_POST["id_producto"]) || !isset($_POST["cantidad"])) {
+        echo "Datos inválidos enviados.";
         return;
     }
 
-    $id_producto = trim($_GET["id_producto"]);
+    $id_producto = trim($_POST["id_producto"]);
+    $cantidad = intval($_POST["cantidad"]);
 
-    
+    if ($cantidad <= 0) {
+        echo "Cantidad no válida.";
+        return;
+    }
+
     if (!isset($_SESSION["carrito"])) {
         $_SESSION["carrito"] = [];
     }
 
-    
     if (isset($_SESSION["carrito"][$id_producto])) {
-        $_SESSION["carrito"][$id_producto]++; 
+        $_SESSION["carrito"][$id_producto] += $cantidad; 
     } else {
-        $_SESSION["carrito"][$id_producto] = 1;
+        $_SESSION["carrito"][$id_producto] = $cantidad;
     }
 
-    //echo "Producto con ID " . $id_producto . " añadido al carro."; // util para debugging
+    echo '
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <script>
+            Swal.fire({
+                title: "¡Agregado!",
+                text: "El producto se añadió al carrito",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            }).then(() => {
+                window.location.href = "'.BASE_URL.'?controller=ControllerProducto&action=mostrarProductos";
+            });
+        </script>
+    </body>
+    </html>';
 
-    header("Location: " . BASE_URL . "?controller=ControllerProducto&action=mostrarProductos");
     exit();
 }
+
+
         
 
     function eliminarDelCarro() {

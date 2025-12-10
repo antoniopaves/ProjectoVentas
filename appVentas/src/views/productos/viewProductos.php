@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="<?php echo CORE_URL . 'src/css/viewProductosStyle.css'; ?>">
 <body>
     <a href="<?php echo BASE_URL."?controller=ControllerProducto&action=viewNuevoProducto" ?>">Nuevo Producto</a>
@@ -44,7 +45,13 @@
                 </th>
                 <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=viewEditarProducto&id_producto=$p->id_producto" ?>">Editar</a></th>
                 <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=EliminarProducto&id_producto=$p->id_producto" ?>">Eliminar</a></th>
-                <th><a href="<?php echo BASE_URL."?controller=ControllerProducto&action=añadirCarro&id_producto=$p->id_producto" ?>">Añadir Al Carro</a></th>
+                <th>
+                <form action="<?php echo BASE_URL . '?controller=ControllerProducto&action=añadirCarro'; ?>" method="post">
+                <input type="hidden" name="id_producto" value="<?php echo $p->id_producto; ?>">
+                <input type="number" name="cantidad" min="1" value="1" style="width:60px;">
+                <button type="submit">Añadir</button>
+                </form>
+                </th>
             </tr>
         <?php } ?>
     </table>
